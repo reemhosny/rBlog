@@ -1,0 +1,23 @@
+<h2 class="page-header">Posts <%=link_to 'Create New',new_admin_post_path ,class:"btn btn-success pull-right"%></h2>
+     <table class="table table-striped">
+     <tr>
+       <th>Post Title</th>
+       <th>Create Date</th>
+       <th>Actions</th>
+     </tr>
+     
+      <% @posts.each do |post| %>
+    <tr>
+     <td><%= post.title %></td>
+     <td><%= post.category.name %></td>
+     <td><%= post.created_at.to_time.strftime(" %e %B at %l:%m %p , %Y")%></td>
+     <td><%= link_to"Edit", edit_admin_post_path(post), class:'btn btn-primary'%> <%= link_to"Delete", admin_post_path(post), class:'btn btn-danger', method: :delete ,data: {confirm: "Are  you sure"}%> 
+     </td>
+    </tr>
+       
+    <% end %>
+       
+     </table>
+     <%= will_paginate @posts %>
+     
+     
