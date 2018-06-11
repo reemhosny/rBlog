@@ -48,8 +48,9 @@ Rails.application.routes.draw do
 resources :posts, :categories
 resources 'contacts',only:[:new,:create]
 namespace :admin do
-resources :posts, :categories, :comments,:users ,:sessions
+resources :posts, :categories,:users,:comments ,:sessions
   end
+  
   resources :posts do
     resources :comments
 
