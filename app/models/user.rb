@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 	attr_accessor :password
+	has_secure_password
 	has_many :posts
 	validates :name ,presence:true
 	validates :email ,presence:true
@@ -8,7 +9,7 @@ class User < ApplicationRecord
 
 	 def self.authenticate(email, password)
 	   user =find_by_email(email)
-	  if user && user_passowrd_hash == Bcrypt::Engine.hash_secret( password, user.passowrd_salt)
+	  if user && user.authenticate(password)
 	  else
 		 nil
 	  end
