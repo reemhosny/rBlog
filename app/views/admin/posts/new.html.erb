@@ -3,44 +3,45 @@
     $('textarea#froala-editor').froalaEditor()
   });
 </script>
-<h2>Add New Posts</h2>
-<%= form_for [:admin, @post] do |f| %> 
-    <% if @post.errors.any? %>
-     <% @post.errors.messages.each do |msg| %>
-     <div class="alert alert-danger"><%=msg%></div>
-    <%end %>
+
+ <h2>Add New Posts</h2>
+  <%= form_for [:admin, @post] do |f| %> 
+      <% if @post.errors.any? %>
+       <% @post.errors.messages.each do |msg| %>
+       <div class="alert alert-danger"><%=msg%></div>
+      <%end %>
   <%end%>
 
   <div class="form-group">
-  <%= f.label :title %>
-  <%= f.text_field :title, class:"form-control" %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class:"form-control" %>
   </div>
 
   <div class="form-group">
-  <%= f.label :category %>
-  <%= f.select :category_id ,Category.all.collect{|x| [x.name ,x.id]},{:include_blank=>'Select One'} ,class:"form-control" %>
+    <%= f.label :category %>
+    <%= f.select :category_id ,Category.all.collect{|x| [x.name ,x.id]},{:include_blank=>'Select One'} ,class:"form-control" %>
   </div>
 
   <div class="form-group">
-  <%= f.label :author %>
-  <%= f.select :user_id ,User.all.collect{|x| [x.name ,x.id]},{:include_blank=>'Select One'} , class:"form-control" %>
+    <%= f.label :author %>
+    <%= f.select :user_id ,User.all.collect{|x| [x.name ,x.id]},{:include_blank=>'Select One'} , class:"form-control" %>
   </div>
 
   <div class="form-group">
-  <%= f.label :image %>
-  <%= f.file_field :image , class:"form-control" %>
+    <%= f.label :image %>
+    <%= f.file_field :image , class:"form-control" %>
   </div>
 
    <div class="form-group">
-  <%= f.label :tags %>
-  <%= f.text_area :tags ,class:"form-control"%>
-  </div>
-  <div class="form-group">
-  <%= f.label :body %>
-  <%= f.text_area :body ,class:"form-control" , id:"froala-editor"%>
+    <%= f.label :tags %>
+    <%= f.text_area :tags ,class:"form-control"%>
   </div>
 
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body ,class:"form-control" , id:"froala-editor"%>
+  </div>
   <br>
-  <%= f.submit "Submit" ,class:"btn btn-primary" %>
-  <%= link_to "Cancel" ,admin_posts_path, class:"btn btn-default"%>
+    <%= f.submit "Submit" ,class:"btn btn-primary" %>
+    <%= link_to "Cancel" ,admin_posts_path, class:"btn btn-default"%>
   <% end %>

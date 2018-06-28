@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  resources :users
   get 'contact'=>'contacts#new'
   get 'contacts/create'
   get 'about'=>'about#index'
   namespace :admin do
-    get 'sessions/new'
+    get "login" =>'sessions#new' , :as => 'login'
     get 'sessions/create'
   end
   namespace :admin do

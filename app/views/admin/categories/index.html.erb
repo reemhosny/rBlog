@@ -1,20 +1,20 @@
-<h2 class="page-header">Manage categories <a  class="btn btn-success pull-right" <%=link_to 'Create New' ,new_admin_category_path %></a></h2>
-     <table class="table table-striped">
-     <tr>
-       <th>Category Title</th>
-       <th>Create Date</th>
-       <th>Actions</th>
-     </tr>
-     
-      <% @categories.each do |category| %>
-    
-      <tr>
-     <td><%= category.name %></td>
-     <td><%= category.created_at.to_time.strftime(" %e %B at %l:%m %p , %Y")%></td>
-     <td><%= link_to"Edit", edit_admin_category_path(category), class: 'btn btn-primary'%> <%= link_to"Delete", admin_category_path(category), class:'btn btn-danger', method: :delete ,data: {confirm: "Are  you sure"}%> </td>
-     </tr>
+   <h2 class="page-header">Manage categories <a  class="btn btn-success pull-right" <%=link_to 'Create New' ,new_admin_category_path %></a></h2>
+       <table class="table table-striped">
+          <tr>
+            <th>Category Title</th>
+            <th>Create Date</th>
+            <th>Actions</th>
+          </tr>
        
-    <%end%>
-       
-     </table>
+        <% @categories.each do |category| %>
+      
+          <tr>
+            <td><%= category.name %></td>
+            <td><%= category.created_at.to_time.strftime(" %e %B at %l:%m %p , %Y")%></td>
+            <td><%= link_to"Edit", edit_admin_category_path(category), class: 'btn btn-primary'%> <%= link_to"Delete", admin_category_path(category), class:'btn btn-danger', method: :delete ,data: {confirm: "Are  you sure"}%> </td>
+          </tr>
+         
+      <%end%>
+         
+       </table>
      <%= will_paginate @categories %>

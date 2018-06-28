@@ -1,7 +1,16 @@
 class Admin::SessionsController <  Admin::ApplicationController
-  def new
-  end
+		layout 'admin/login'
+	  def new
+	  end
 
-  def create
-  end
+	  def create
+		  	user = User.authenticate(params[:email] , params[:password])
+	      if user 
+		    session[:user_id] = user.id
+		    redirect_to admin_posts_path, :notice => 'Logged in!'
+		  else
+		    flash.now.alert = 'Email or password is invalid'
+		    render 'new'
+		  end
+	  end
 end

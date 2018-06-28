@@ -1,5 +1,5 @@
 <h2>Edit User</h2>
-<%= form_for [:admin, @user] do |f| %> 
+  <%= form_for [:admin, @user] do |f| %> 
     <% if @user.errors.any? %>
      <% @user.errors.messages.each do |msg| %>
      <div class="alert alert-danger"><%=msg%></div>
@@ -15,24 +15,20 @@
  
 
   <div class="form-group">
-  <%= f.label :email %>
-  <%= f.text_field :email ,class:'form-control' %>
+    <%= f.label :email %>
+    <%= f.text_field :email ,class:'form-control' %>
   </div>
 
    <div class="form-group">
-  <%= f.label :new_password %>
-  <%= f.password_field :password , class:'form-control' %>
+    <%= f.label :new_password %>
+    <%= f.password_field :password , class:'form-control' %>
   </div>
 
   <div class="form-group">
-  <%= f.label :new_password_confirmation %>
-  <%= f.password_field :password_confirmation , class:'form-control' %>
+    <%= f.label :new_password_confirmation %>
+    <%= f.password_field :password_confirmation , class:'form-control' %>
   </div>
-
-
-  
-
   <br>
-  <%= f.submit "Submit" ,class:"btn btn-primary" %>
-  <%= link_to "Cancel" ,admin_users_path, class:"btn btn-default"%>
+    <%= f.submit "Submit" ,class:"btn btn-primary" %>
+    <%= link_to "Cancel" ,admin_users_path, class:"btn btn-default"%>
   <% end %>
