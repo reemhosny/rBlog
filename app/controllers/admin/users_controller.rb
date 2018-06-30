@@ -1,4 +1,5 @@
 class Admin::UsersController < Admin::ApplicationController
+  before_action :authorize
         def new
               @page_title = "Add User"
               @user = User.new

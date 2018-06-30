@@ -1,4 +1,5 @@
 class Admin::PostsController <  Admin::ApplicationController
+      before_action :authorize
       def new
           @page_title = "Add Post"
           @post = Post.new

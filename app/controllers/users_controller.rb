@@ -42,14 +42,16 @@ class UsersController < ApplicationController
 	def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to admin_users_path
+       session[:user_id] = user.id
+       redirect_to admin_users_path
     else
       render 'new'
     end
   end
 
+private
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
 end

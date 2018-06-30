@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get 'contacts/create'
   get 'about'=>'about#index'
   namespace :admin do
-    get "login" =>'sessions#new' , :as => 'login'
-    get 'sessions/create'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
   end
   namespace :admin do
     get 'users/new'
@@ -44,6 +45,8 @@ Rails.application.routes.draw do
   get 'posts/show'
   get 'post/index'
   get 'post/show'
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
 
 
 resources :posts, :categories

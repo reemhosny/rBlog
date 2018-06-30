@@ -3,8 +3,8 @@
         <% if @user.errors.any? %>
            <% @user.errors.messages.each do |msg| %>
            <div class="alert alert-danger"><%=msg%></div>
-           <%end %>
-        <%end%>
+        <%end %>
+    <%end%>
 
    <% @user.errors.messages.each do |msg| %>
       <div class="alert alert-danger"><%=msg%></div>

@@ -1,4 +1,5 @@
 class Admin::CategoriesController < Admin::ApplicationController
+     before_action :authorize
       def new
         @page_title = "Add Category"
         @category = Category.new
